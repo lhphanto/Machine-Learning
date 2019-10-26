@@ -36,7 +36,7 @@ cross_entropy = tf.keras.losses.binary_crossentropy #y, predictions
 
 lrate = 0.01
 
-optimizer = tf.keras.optimizers.Adam(lr=1e-3)
+optimizer = tf.keras.optimizers.Adam(lr=lrate)
 
 model.compile(loss=cross_entropy, target_tensors=y, optimizer=optimizer)
 
