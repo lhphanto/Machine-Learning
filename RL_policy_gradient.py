@@ -59,7 +59,7 @@ saver = tf.train.Saver()
 
 
 def discount_rewards(rewards, discount_rate):
-  discounted_rewards = np.empty(len(rewards))
+  discounted_rewards = np.zeros(len(rewards))
   cumulative_rewards = 0
   for step in reversed(range(len(rewards))):
     cumulative_rewards = rewards[step] + cumulative_rewards * discount_rate
@@ -96,8 +96,8 @@ with tf.Session() as sess:
         current_gradients.append(gradient_val)
         if done:
           break
-    all_rewards.append(current_rewards) # rewards per step for 10 games
-    all_gradients.append(current_gradients)
+      all_rewards.append(current_rewards) # rewards per step for 10 games
+      all_gradients.append(current_gradients)
 
     all_rewards = discount_and_normalize_rewards(all_rewards, discount_rate)
     feed_dict = {}
